@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Ensure the dist directory exists
-const distPath = path.join(__dirname, 'dist/meeting-scheduler');
+const distPath = path.join(__dirname, 'dist/meeting-scheduler/browser');
 
 if (fs.existsSync(distPath)) {
   console.log('✅ Build output directory exists');
