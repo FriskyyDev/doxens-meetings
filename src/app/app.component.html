@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">  <mat-toolbar-row>
+    <span>Meeting Leader Scheduler</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/admin" routerLinkActive="active">Admin</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Corgi SVG in bottom left corner -->
+<div class="corgi-container">
+  <svg width="120" height="90" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <ellipse cx="100" cy="90" rx="45" ry="25" fill="#D2691E" stroke="#8B4513" stroke-width="2" />
+
+    <!-- Head -->
+    <ellipse cx="100" cy="50" rx="35" ry="30" fill="#D2691E" stroke="#8B4513" stroke-width="2" />
+
+    <!-- Ears -->
+    <ellipse cx="80" cy="35" rx="12" ry="20" fill="#D2691E" stroke="#8B4513" stroke-width="2" />
+    <ellipse cx="120" cy="35" rx="12" ry="20" fill="#D2691E" stroke="#8B4513" stroke-width="2" />
+    <ellipse cx="80" cy="35" rx="6" ry="12" fill="#FFB6C1" />
+    <ellipse cx="120" cy="35" rx="6" ry="12" fill="#FFB6C1" />
+
+    <!-- Eyes -->
+    <circle cx="88" cy="45" r="4" fill="#000" />
+    <circle cx="112" cy="45" r="4" fill="#000" />
+    <circle cx="89" cy="43" r="1.5" fill="#FFF" />
+    <circle cx="113" cy="43" r="1.5" fill="#FFF" />
+
+    <!-- Nose -->
+    <ellipse cx="100" cy="55" rx="3" ry="2" fill="#000" />
+
+    <!-- Mouth -->
+    <path d="M 100 58 Q 95 62 90 60" stroke="#000" stroke-width="2" fill="none" />
+    <path d="M 100 58 Q 105 62 110 60" stroke="#000" stroke-width="2" fill="none" />
+
+    <!-- Legs -->
+    <rect x="70" y="110" width="8" height="20" fill="#D2691E" stroke="#8B4513" stroke-width="1" />
+    <rect x="85" y="110" width="8" height="20" fill="#D2691E" stroke="#8B4513" stroke-width="1" />
+    <rect x="107" y="110" width="8" height="20" fill="#D2691E" stroke="#8B4513" stroke-width="1" />
+    <rect x="122" y="110" width="8" height="20" fill="#D2691E" stroke="#8B4513" stroke-width="1" />
+
+    <!-- Paws -->
+    <ellipse cx="74" cy="135" rx="6" ry="4" fill="#8B4513" />
+    <ellipse cx="89" cy="135" rx="6" ry="4" fill="#8B4513" />
+    <ellipse cx="111" cy="135" rx="6" ry="4" fill="#8B4513" />
+    <ellipse cx="126" cy="135" rx="6" ry="4" fill="#8B4513" />
+
+    <!-- Tail -->
+    <ellipse cx="145" cy="85" rx="15" ry="8" fill="#D2691E" stroke="#8B4513" stroke-width="2" />
+
+    <!-- White chest marking -->
+    <ellipse cx="100" cy="85" rx="15" ry="12" fill="#FFF" />
+  </svg>
+</div>
