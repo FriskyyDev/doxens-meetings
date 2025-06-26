@@ -18,6 +18,9 @@ COPY . .
 # Build the Angular application
 RUN npm run build
 
+# Verify build output
+RUN ls -la dist/meeting-scheduler/browser/ || (echo "Build failed - no browser directory found" && exit 1)
+
 # Production stage
 FROM node:18-alpine AS production
 
@@ -32,6 +35,9 @@ RUN npm ci --only=production
 
 # Copy built application from build stage
 COPY --from=build /app/dist ./dist
+
+# Verify files were copied correctly
+RUN ls -la dist/meeting-scheduler/browser/ || (echo "Files not copied correctly" && exit 1)
 
 # Copy server.js and any other production files
 COPY server.js ./
