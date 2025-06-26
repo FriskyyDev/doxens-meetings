@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server-minimal.js",
+    "start": "node server-basic.js",
+    "start-minimal": "node server-minimal.js",
     "start-full": "node server.js",
     "dev": "ng serve",
     "build": "ng build --configuration production",
