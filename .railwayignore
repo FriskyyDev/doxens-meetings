@@ -1,0 +1,9 @@
+node_modules
+.git
+.angular
+.vscode
+*.log
+dist
+Dockerfile
+server-basic.js
+server-minimal.js

@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server-basic.js",
-    "start-minimal": "node server-minimal.js",
-    "start-full": "node server.js",
+    "start": "node server.js",
     "dev": "ng serve",
     "build": "ng build --configuration production",
+    "build:railway": "npm ci && npm run build",
     "postbuild": "node post-build.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
