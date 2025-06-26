@@ -28,11 +28,9 @@ FROM node:18-alpine AS production
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json for production dependencies
+# First, let's copy and install production dependencies
 COPY package*.json ./
-
-# Install only production dependencies
-RUN npm ci --only=production
+RUN npm ci --only=production && npm cache clean --force
 
 # Copy built application from build stage
 COPY --from=build /app/dist ./dist
@@ -41,16 +39,22 @@ COPY --from=build /app/dist ./dist
 RUN echo "=== Files copied to production stage ===" && \
     find . -name "*.html" -o -name "*.js" | grep -v node_modules | head -10
 
-# Copy server.js and any other production files
+# Copy server files
 COPY server.js ./
+COPY server-minimal.js ./
 COPY post-build.js ./
+COPY Procfile ./
 
-# Add a simple health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "const http=require('http'); http.get('http://localhost:' + (process.env.PORT || 3000) + '/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); }).on('error', () => process.exit(1));"
+# Create a startup script that's very explicit
+RUN echo '#!/bin/sh' > /app/start.sh && \
+    echo 'echo "Starting with direct node command..."' >> /app/start.sh && \
+    echo 'echo "PORT: $PORT"' >> /app/start.sh && \
+    echo 'echo "NODE_ENV: $NODE_ENV"' >> /app/start.sh && \
+    echo 'exec node server-minimal.js' >> /app/start.sh && \
+    chmod +x /app/start.sh
 
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Define the command to run the application
-CMD ["node", "server.js"]
+# Use the explicit startup script
+CMD ["/app/start.sh"]
